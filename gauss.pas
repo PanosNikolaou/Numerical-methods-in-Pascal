@@ -57,8 +57,8 @@ BEGIN
           Write( I, ': ');
           ReadLn( B[I])
         END;
-  //WriteLn;
-  //WriteLn( 'INITIAL MATRIX');
+  WriteLn;
+  WriteLn( 'INITIAL VECTOR');
   FOR I:= 1 TO N  DO
       BEGIN
            Write( B[I]:7:4, '  ');
