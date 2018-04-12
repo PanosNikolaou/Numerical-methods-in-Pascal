@@ -66,23 +66,19 @@ BEGIN
   WriteLn
 END;
 
-// Solve A x = b
 PROCEDURE gauss (VAR A : TMatrix; VAR b,x : TVector);
 VAR rowx : integer;
     i, j, k, n, m : integer;
     amax, xfac, temp, temp1 : double;
 BEGIN
   n := 3;
-  rowx := 0;  // Keep count of the row interchanges
-  //n := A.r;
-
-  WriteLn( 'Forward elimination started');
+  rowx := 0;
 
   FOR k := 1 TO n - 1 DO
       BEGIN
       amax := abs (A[k,k]);
       m := k;
-      // Find the row with largest pivot
+
       FOR i := k + 1 TO n DO
           BEGIN
           xfac := abs (A[i,k]);
@@ -94,7 +90,7 @@ BEGIN
           END;
 
       IF m <> k THEN
-         BEGIN  // Row interchanges
+         BEGIN 
          rowx := rowx+1;
          temp1 := b[k];
          b[k] := b[m];
@@ -107,8 +103,6 @@ BEGIN
              END;
       END;
 
-      //forward elimination
-
       FOR i := k+1 TO n DO
           BEGIN
           xfac := a[i, k]/a[k, k];
@@ -118,9 +112,6 @@ BEGIN
           END;
       END;
 
- WriteLn( 'Back substitution started');
-
-  // Back substitution
   FOR j := 1 TO n DO
       BEGIN
       k := n-j + 1;
